@@ -1,20 +1,28 @@
 package com.example.shedule;
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-
+@Entity
 public class Couple {
+    @NonNull
+    @PrimaryKey
+    private String lessonOid;
     private String discipline, auditorium, lecturer, building, kindOfWork, beginLesson, endLesson, date;
    // private LocalDate date;
-    DateTimeFormatter dft = DateTimeFormatter.ofPattern("yyyy.MM.dd");
-    public Couple(String discipline, String audithorium, String lecturer, String building, String kindOfWork, String beginLesson, String endLesson, String date){
+    //DateTimeFormatter dft = DateTimeFormatter.ofPattern("yyyy.MM.dd");
+    public Couple(String discipline, String auditorium, String lecturer, String building, String kindOfWork, String beginLesson, String endLesson, String date, String lessonOid){
         this.discipline = discipline;
-        this.auditorium = audithorium;
+        this.auditorium = auditorium;
         this.lecturer = lecturer;
         this.date = date;
         this.building = building;
         this.kindOfWork = kindOfWork;
         this.beginLesson = beginLesson;
         this.endLesson = endLesson;
+        this.lessonOid = lessonOid;
     }
     public String getDiscipline(){
         return this.discipline;
@@ -65,5 +73,8 @@ public class Couple {
     public void setEndLesson(String endLesson){
         this.endLesson = endLesson;
     }
+    public void setLessonOid(String lessonOid) {this.lessonOid = lessonOid;}
+    @NonNull
+    public String getLessonOid() {return this.lessonOid;}
 
 }
