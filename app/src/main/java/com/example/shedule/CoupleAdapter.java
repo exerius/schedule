@@ -8,27 +8,30 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class CoupleAdapter extends RecyclerView.Adapter<CoupleAdapter.ViewHolder> {
-    private final LayoutInflater inflater;
-    private final List<Couple> couples;
+public class CoupleAdapter extends ListAdapter<Couple, CoupleViewHolder> {
+   // private final LayoutInflater inflater;
+   public List<Couple> couples;
 
-    CoupleAdapter(Context context, List<Couple> couples) {
+    CoupleAdapter(@NonNull DiffUtil.ItemCallback<Couple> diffCallback, List<Couple> couples) {
+        super(diffCallback);
         this.couples = couples;
-        this.inflater = LayoutInflater.from(context);
+       // this.inflater = LayoutInflater.from(context);
+
     }
     @Override
     @NonNull
-    public CoupleAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public CoupleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View view = inflater.inflate(R.layout.list_item, parent, false);
-        return new ViewHolder(view);
+        return CoupleViewHolder.create(parent);
     }
     @Override
-    public void onBindViewHolder(CoupleAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(CoupleViewHolder holder, int position) {
         Couple couple = couples.get(position);
         holder.name.setText(couple.getDiscipline());
         holder.audithorium.setText(couple.getAuditorium());
@@ -45,12 +48,6 @@ public class CoupleAdapter extends RecyclerView.Adapter<CoupleAdapter.ViewHolder
                 break;
         }
     }
-
-    @Override
-    public int getItemCount() {
-        return couples.size();
-    }
-
     public static class ViewHolder extends RecyclerView.ViewHolder {
         final ImageView type;
         final TextView name, audithorium, date, time, building;
@@ -63,5 +60,21 @@ public class CoupleAdapter extends RecyclerView.Adapter<CoupleAdapter.ViewHolder
             time = view.findViewById(R.id.time);
             building = view.findViewById(R.id.building);
         }
+    }
+    static class CoupleDiff extends DiffUtil.ItemCallback<Couple> {
+
+        @Override
+        public boolean areItemsTheSame(@NonNull Couple oldItem, @NonNull Couple newItem) {
+            return oldItem == newItem;
+        }
+
+        @Override
+        public boolean areContentsTheSame(@NonNull Couple oldItem, @NonNull Couple newItem) {
+            return oldItem.getLessonOid().equals(newItem.getLessonOid());
+        }
+    }
+    @Override
+    public int getItemCount() {
+        return couples.size();
     }
 }
