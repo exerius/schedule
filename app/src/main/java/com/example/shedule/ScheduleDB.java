@@ -42,5 +42,6 @@ public abstract class ScheduleDB extends RoomDatabase {
         }
         return INSTANCE;
     }
+
 }
 
