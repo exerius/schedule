@@ -3,17 +3,20 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
+
 @Entity
 public class Couple {
     @NonNull
     @PrimaryKey
     private String lessonOid;
     private String discipline, auditorium, lecturer, building, kindOfWork, beginLesson, endLesson, date;
-   // private LocalDate date;
-    //DateTimeFormatter dft = DateTimeFormatter.ofPattern("yyyy.MM.dd");
-    public Couple(String discipline, String auditorium, String lecturer, String building, String kindOfWork, String beginLesson, String endLesson, String date, String lessonOid){
+    public Couple(String discipline, String auditorium, String lecturer, String building, String kindOfWork, String beginLesson, String endLesson, String date, @NonNull String lessonOid){
         this.discipline = discipline;
         this.auditorium = auditorium;
         this.lecturer = lecturer;

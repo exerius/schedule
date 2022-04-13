@@ -1,8 +1,10 @@
 package com.example.shedule;
 
 import android.content.Context;
+import android.net.Uri;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
@@ -23,18 +25,33 @@ import okhttp3.Response;
 
 public class WorkerDownloader extends Worker {
     String dataString;
+    Uri link;
+    Uri.Builder builder = new Uri.Builder();
     Gson gson = new Gson();
+    Data dates;
     ArrayList<Couple> couples = new ArrayList<Couple>();
     Context context;
     public WorkerDownloader (Context context, WorkerParameters params){
         super(context, params);
         this.context = context;
     }
+    @NonNull
     @Override
     public Result doWork(){
+
+        builder.scheme("https")
+                .authority("ruz.fa.ru")
+                .appendPath("api")
+                .appendPath("schedule")
+                .appendPath("group")
+                .appendPath("11995")
+                .appendQueryParameter("start", getInputData().getString("monday"))
+                .appendQueryParameter("finish", getInputData().getString("sunday"))
+                .appendQueryParameter("lng", "1");
+        link = builder.build();
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
-                .url("https://ruz.fa.ru/api/schedule/group/11995?start=2022.02.07&finish=2022.02.12&lng=1")
+                .url(link.toString())
                 .get()
                 .build();
         try (Response response = client.newCall(request).execute()) {
