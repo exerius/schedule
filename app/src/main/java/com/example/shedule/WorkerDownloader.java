@@ -1,6 +1,7 @@
 package com.example.shedule;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.util.Log;
 
@@ -25,11 +26,11 @@ import okhttp3.Response;
 
 public class WorkerDownloader extends Worker {
     String dataString;
+    SharedPreferences prefs;
     Uri link;
     Uri.Builder builder = new Uri.Builder();
     Gson gson = new Gson();
-    Data dates;
-    ArrayList<Couple> couples = new ArrayList<Couple>();
+    ArrayList<Couple> couples = new ArrayList<>();
     Context context;
     public WorkerDownloader (Context context, WorkerParameters params){
         super(context, params);
@@ -38,13 +39,13 @@ public class WorkerDownloader extends Worker {
     @NonNull
     @Override
     public Result doWork(){
-
+        prefs = context.getSharedPreferences("preferences", Context.MODE_PRIVATE);
         builder.scheme("https")
                 .authority("ruz.fa.ru")
                 .appendPath("api")
                 .appendPath("schedule")
                 .appendPath("group")
-                .appendPath("11995")
+                .appendPath(prefs.getString("groupId", "11995"))
                 .appendQueryParameter("start", getInputData().getString("monday"))
                 .appendQueryParameter("finish", getInputData().getString("sunday"))
                 .appendQueryParameter("lng", "1");
