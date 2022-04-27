@@ -32,7 +32,7 @@ import java.util.Objects;
 public class MainActivity extends AppCompatActivity {
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
-    String curMonday, curSunday;
+    String curMonday, curSunday, notes;
     EditText group;
     ArrayList<Couple> couples = new ArrayList<>();
     RecyclerView recyclerView;
@@ -41,7 +41,17 @@ public class MainActivity extends AppCompatActivity {
     CoupleViewModel model;
     TextView date;
     int Year, Day, Month;
+    EditText edittext;
     public void settings(View view) {
+        setContentView(R.layout.notes);
+        edittext = findViewById(R.id.text);
+        edittext.setText(preferences.getString("notes",""));
+    }
+    public void Return (View v){
+        notes = edittext.getText().toString();
+        editor.putString("notes", notes);
+        editor.commit();
+        main();
     }
     public void setWeek(View v) {
         final String[] sunday = new String[1];
@@ -151,6 +161,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        main();
+    }
+    private void main(){
         setContentView(R.layout.activity_main);
         date = findViewById(R.id.textView);
         group = findViewById(R.id.editTextTextPersonName);
