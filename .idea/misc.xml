@@ -3,11 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Projects/shedule/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.299" />
+        <entry key="..\:/Projects/shedule/app/src/main/res/drawable/ic_baseline_notes_24.xml" value="0.299" />
+        <entry key="..\:/Projects/shedule/app/src/main/res/drawable/ic_baseline_view_list_24.xml" value="0.299" />
+        <entry key="..\:/Projects/shedule/app/src/main/res/drawable/ic_launcher_background.xml" value="0.299" />
         <entry key="..\:/Projects/shedule/app/src/main/res/drawable/lecture.xml" value="0.141" />
         <entry key="..\:/Projects/shedule/app/src/main/res/drawable/seminar.xml" value="0.2985" />
         <entry key="..\:/Projects/shedule/app/src/main/res/layout/activity_couple.xml" value="0.36666666666666664" />
         <entry key="..\:/Projects/shedule/app/src/main/res/layout/activity_main.xml" value="0.5" />
         <entry key="..\:/Projects/shedule/app/src/main/res/layout/list_item.xml" value="0.5" />
+        <entry key="..\:/Projects/shedule/app/src/main/res/layout/notes.xml" value="0.30434782608695654" />
         <entry key="..\:/Projects/shedule/app/src/main/res/layout/settings.xml" value="0.23596014492753623" />
       </map>
     </option>
