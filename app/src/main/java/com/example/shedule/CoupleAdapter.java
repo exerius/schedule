@@ -48,19 +48,7 @@ public class CoupleAdapter extends ListAdapter<Couple, CoupleViewHolder> {
                 break;
         }
     }
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        final ImageView type;
-        final TextView name, audithorium, date, time, building;
-        ViewHolder(View view){
-            super(view);
-            type = view.findViewById(R.id.type);
-            name = view.findViewById(R.id.name);
-            audithorium = view.findViewById(R.id.audithorium);
-            date = view.findViewById(R.id.date);
-            time = view.findViewById(R.id.time);
-            building = view.findViewById(R.id.building);
-        }
-    }
+
     static class CoupleDiff extends DiffUtil.ItemCallback<Couple> {
 
         @Override
