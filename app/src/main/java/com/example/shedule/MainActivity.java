@@ -8,7 +8,6 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -82,8 +81,7 @@ public class MainActivity extends AppCompatActivity {
             NetworkInfo nInfo = cm.getActiveNetworkInfo();
             connected = nInfo != null && nInfo.isAvailable() && nInfo.isConnected();
             return connected;
-        } catch (Exception e) {
-            Log.e("Connectivity Exception", e.getMessage());
+        } catch (Exception ignored) {
         }
         return false;
     }
@@ -163,6 +161,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         main();
     }
+    @SuppressLint("NotifyDataSetChanged")
     private void main(){
         setContentView(R.layout.activity_main);
         date = findViewById(R.id.textView);
