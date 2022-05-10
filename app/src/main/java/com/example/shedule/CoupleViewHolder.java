@@ -19,6 +19,7 @@ class CoupleViewHolder extends RecyclerView.ViewHolder {
         date = view.findViewById(R.id.date);
         time = view.findViewById(R.id.time);
         building = view.findViewById(R.id.building);
+
     }
 
     static CoupleViewHolder create(ViewGroup parent) {

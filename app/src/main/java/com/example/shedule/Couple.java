@@ -1,14 +1,8 @@
 package com.example.shedule;
+
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 @Entity
 public class Couple {
@@ -64,15 +58,14 @@ public class Couple {
     public void setDate(String date){
         this.date = date;
     }
+
     public String getBeginLesson(){
         return this.beginLesson;
     }
     public String getEndLesson(){
         return this.endLesson;
     }
-    public void setBeginLesson(String beginLesson){
-        this.beginLesson = beginLesson;
-    }
+    public void setBeginLesson(String beginLesson){ this.beginLesson = beginLesson; }
     public void setEndLesson(String endLesson){
         this.endLesson = endLesson;
     }

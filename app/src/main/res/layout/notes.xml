@@ -22,6 +22,7 @@
         android:breakStrategy="high_quality"
         android:gravity="top"
         android:inputType="textMultiLine"
+        android:background="@null"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

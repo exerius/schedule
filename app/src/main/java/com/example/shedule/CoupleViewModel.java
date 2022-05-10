@@ -4,9 +4,7 @@ import android.app.Application;
 
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.room.Room;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CoupleViewModel extends AndroidViewModel {
@@ -15,7 +13,7 @@ public class CoupleViewModel extends AndroidViewModel {
     public CoupleDao dao;
     public CoupleViewModel(Application application){
         super(application);
-        ScheduleDB db = ScheduleDB.getDataBase(application);
+        db = ScheduleDB.getDataBase(application);
         dao = db.coupleDao();
         livedata = dao.getAll();
 

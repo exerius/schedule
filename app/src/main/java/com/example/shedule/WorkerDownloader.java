@@ -3,13 +3,8 @@ package com.example.shedule;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.Uri;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.Room;
-import androidx.work.Data;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
@@ -32,6 +27,9 @@ public class WorkerDownloader extends Worker {
     Gson gson = new Gson();
     ArrayList<Couple> couples = new ArrayList<>();
     Context context;
+    ScheduleDB db;
+    CoupleDao dao;
+    OkHttpClient client = new OkHttpClient();
     public WorkerDownloader (Context context, WorkerParameters params){
         super(context, params);
         this.context = context;
@@ -50,7 +48,6 @@ public class WorkerDownloader extends Worker {
                 .appendQueryParameter("finish", getInputData().getString("sunday"))
                 .appendQueryParameter("lng", "1");
         link = builder.build();
-        OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
                 .url(link.toString())
                 .get()
@@ -63,8 +60,8 @@ public class WorkerDownloader extends Worker {
         {
 
         }
-        ScheduleDB db = ScheduleDB.getDataBase(this.context);
-        CoupleDao dao = db.coupleDao();
+        db = ScheduleDB.getDataBase(this.context);
+        dao = db.coupleDao();
         couples = (ArrayList<Couple>) gson.fromJson(dataString, new TypeToken<ArrayList<Couple>>(){}.getType());
         dao.deleteAll();
         for(Couple i: couples)

@@ -22,6 +22,9 @@ public class WorkerGroupGetter extends Worker {
     String dataString;
     Uri link;
     Uri.Builder builder = new Uri.Builder();
+    OkHttpClient client = new OkHttpClient();
+    Request request;
+    JSONArray jsonArray;
     public WorkerGroupGetter(Context context, WorkerParameters params) {
         super(context, params);
         this.context = context;
@@ -40,15 +43,14 @@ public class WorkerGroupGetter extends Worker {
                 .appendQueryParameter("type", "group")
                 .build();
         link = builder.build();
-        OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder()
+        request = new Request.Builder()
                 .url(link.toString())
                 .get()
                 .build();
         try (Response response = client.newCall(request).execute()) {
             if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
             dataString = Objects.requireNonNull(response.body()).string();
-            JSONArray jsonArray = new JSONArray(dataString);
+            jsonArray = new JSONArray(dataString);
             ed.putString("groupId", jsonArray.getJSONObject(0).getString("id"));
             ed.putString("groupName", getInputData().getString("group_name"));
             ed.commit();
