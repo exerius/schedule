@@ -93,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
         nextSunday = LocalDate.parse(curSunday, dtf).plusDays(7);
         curMonday = nextMonday.format(dtf);
         curSunday = nextSunday.format(dtf);
+        date.setText(nextMonday+"-"+nextSunday);
         Download();
     }
 
@@ -118,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
         nextSunday = LocalDate.parse(curSunday, dtf).minusDays(7);
         curMonday = nextMonday.format(dtf);
         curSunday = nextSunday.format(dtf);
+        date.setText(nextMonday+"-"+nextSunday);
         Download();
     }
     public void setGroup(View v){

@@ -9,8 +9,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list"
-        android:layout_width="379dp"
-        android:layout_height="559dp"
+        android:layout_width="356dp"
+        android:layout_height="500dp"
 
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -36,65 +36,61 @@
         android:id="@+id/textView"
         android:layout_width="214dp"
         android:layout_height="26dp"
-        android:layout_marginTop="52dp"
         android:onClick="setWeek"
         android:text="Выберите неделю"
         app:layout_constraintBottom_toTopOf="@+id/list"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.416"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
         android:id="@+id/imageButton"
         android:layout_width="57dp"
         android:layout_height="27dp"
-        android:layout_marginStart="80dp"
+        android:layout_marginEnd="4dp"
         android:onClick="previousWeek"
-        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintBottom_toTopOf="@+id/list"
         app:layout_constraintEnd_toStartOf="@+id/textView"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/list"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.014"
         app:srcCompat="@android:drawable/ic_media_previous" />
 
     <ImageButton
         android:id="@+id/imageButton2"
         android:layout_width="73dp"
         android:layout_height="28dp"
-        android:layout_marginEnd="72dp"
         android:onClick="nextWeek"
         app:layout_constraintBottom_toTopOf="@+id/list"
-        app:layout_constraintEnd_toEndOf="@+id/list"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toTopOf="@+id/textView"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@android:drawable/ic_media_next" />
 
     <EditText
         android:id="@+id/editTextTextPersonName"
-        android:layout_width="228dp"
-        android:layout_height="41dp"
+        android:layout_width="284dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="4dp"
         android:ems="5"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.463"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.25" />
+        app:layout_constraintHorizontal_bias="0.031"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
         android:id="@+id/imageButton3"
         android:layout_width="69dp"
         android:layout_height="42dp"
+        android:onClick="setGroup"
         app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.135"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName"
         app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@android:drawable/ic_menu_send"
-        android:onClick="setGroup"/>
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@android:drawable/ic_menu_send" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
